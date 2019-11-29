@@ -39,7 +39,7 @@ def info():
 
     for r in company:
         dict_comp.update({r[0]: r[1]})
-    
+
     logging.info(dict_comp)
 
     try:
