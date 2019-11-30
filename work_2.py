@@ -48,12 +48,12 @@ def page(link):
         На выходе: список словарей с нужными значениями.
     """
     try:
-        n = int(input("Введите нужное количество постов:   "))
+        count = int(input("Введите нужное количество постов:   "))
     except ValueError:
-        n = int(input("Ошибка!Вводите только цифры:   "))     
+        count = int(input("Ошибка!Вводите только цифры:   "))
     i = 1
     posts = []
-    while True and n > 0:
+    while True and count > 0:
         page = get_html(link + f"page{i}/")
         soup = BeautifulSoup(page, "html.parser")
         posts_all = soup.find_all(
@@ -80,12 +80,12 @@ def page(link):
                     ("date", date), ("name", user)])
 
                 posts.append(dict_)
-                if len(posts) == n:
+                if len(posts) == count:
                     break
             except AttributeError:
                 pass
-        if len(posts) == n:
-            logging.info(f"Posts is full! Amount - {n}! Pages - {i}")
+        if len(posts) == count:
+            logging.info(f"Posts is full! Amount - {count}! Pages - {i}")
             break
     if len(posts) == 0:
         logging.info("Count error (<= 0). EXIT!")
