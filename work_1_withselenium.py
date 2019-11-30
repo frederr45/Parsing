@@ -5,8 +5,9 @@ from selenium import webdriver
 from work_2 import write_csv
 
 if __name__ == "__main__":
+    num = int(input("Вставьте номер компании из ссылки:  "))
     with webdriver.Chrome() as driver:
-        driver.get("https://www.list-org.com/company/4868135")
+        driver.get(f"https://www.list-org.com/company/{num}")
         time.sleep(1)
 
         #  name - Название предприятия
